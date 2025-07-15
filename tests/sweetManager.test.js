@@ -1,7 +1,7 @@
 const { addSweet, getSweets } = require('../src/sweetManager');
 
 describe('Sweet Shop Management', () => {
-  test('should add a sweet with ID, name, category, price, and quantity', () => {
+  test('should add multiple sweets to the sweet list', () => {
     addSweet({
       id: 1001,
       name: 'Kaju Katli',
@@ -10,11 +10,27 @@ describe('Sweet Shop Management', () => {
       quantity: 20,
     });
 
-    const sweets = getSweets();
+    addSweet({
+      id: 1002,
+      name: 'Gajar Halwa',
+      category: 'Vegetable-Based',
+      price: 30,
+      quantity: 15,
+    });
 
-    expect(sweets.length).toBe(1);
+    addSweet({
+      id: 1003,
+      name: 'Gulab Jamun',
+      category: 'Milk-Based',
+      price: 10,
+      quantity: 50,
+    });
+
+    const sweets = getSweets();
+    
+    expect(sweets.length).toBe(3);
     expect(sweets[0].name).toBe('Kaju Katli');
-    expect(sweets[0].price).toBe(50);
-    expect(sweets[0].quantity).toBe(20);
+    expect(sweets[1].name).toBe('Gajar Halwa');
+    expect(sweets[2].name).toBe('Gulab Jamun');
   });
 });
