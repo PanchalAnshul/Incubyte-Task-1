@@ -1,5 +1,6 @@
 let sweets = [];
 
+// Function to add a sweet
 function addSweet(sweet) {
   const nameExists = sweets.some(
     (s) => s.name.trim().toLowerCase() === sweet.name.trim().toLowerCase()
@@ -18,10 +19,14 @@ function addSweet(sweet) {
   sweets.push(sweet);
 }
 
+
+// Function to get all sweets
 function getSweets() {
   return sweets;
 }
 
+
+// Function to delete a sweet by ID
 function deleteSweet(id) {
   const index = sweets.findIndex((s) => s.id === id);
   
@@ -32,6 +37,8 @@ function deleteSweet(id) {
   sweets.splice(index, 1); // Remove 1 item at position `index`
 }
 
+
+// Function to search sweets based on criteria
 function searchSweets({ name, category, minPrice, maxPrice }) {
   return sweets.filter((s) => {
     const matchesName = name ? s.name.toLowerCase().includes(name.toLowerCase()) : true;
@@ -43,6 +50,8 @@ function searchSweets({ name, category, minPrice, maxPrice }) {
   });
 }
 
+
+// Function to sort sweets based on a property
 function sortSweets(by) {
   const sorted = [...sweets]; // shallow copy
   if (by === "name") {
@@ -55,7 +64,7 @@ function sortSweets(by) {
   return sorted;
 }
 
-
+// Function to clear all sweets
 function clearSweets() {
   sweets = [];
 }

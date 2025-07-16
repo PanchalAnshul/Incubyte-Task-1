@@ -126,6 +126,7 @@ test("should delete valid sweet and throw specific error if ID not found", () =>
   }).toThrow(`Sweet with ID ${wrongId} not found.`);
 });
 
+//View sweets
 test("should view all sweets currently in the shop", () => {
   clearSweets(); 
   addSweet({
