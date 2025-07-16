@@ -22,8 +22,12 @@ function getSweets() {
   return sweets;
 }
 
+function deleteSweet(id) {
+  sweets = sweets.filter((s) => s.id !== id);
+}
+
 function clearSweets() {
   sweets = [];
 }
 
-module.exports = { addSweet, getSweets, clearSweets };
+module.exports = { addSweet, getSweets, clearSweets, deleteSweet };

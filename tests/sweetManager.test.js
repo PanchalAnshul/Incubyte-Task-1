@@ -1,4 +1,4 @@
-const { addSweet, getSweets, clearSweets } = require('../src/sweetManager');
+const { addSweet, getSweets, clearSweets,deleteSweet } = require('../src/sweetManager');
 
 beforeEach(() => {
   clearSweets();
@@ -38,4 +38,6 @@ test('should add sweets and throw error if duplicate name or ID is added', () =>
 
   expect(errorCaught).toBe(true); // We expect a duplicate error
   expect(getSweets().length).toBe(5); 
+  deleteSweet(1001); // Will delete it
+  expect(getSweets().length).toBe(4); // After deletion, we will have 4 sweets left
 });
