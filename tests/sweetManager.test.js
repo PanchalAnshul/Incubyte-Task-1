@@ -171,4 +171,16 @@ test("should search sweets by name, category, and price range", () => {
   expect(results.length).toBe(1);
   expect(results[0].name).toBe("Gulab Jamun");
 
+  // Search by category
+  results = searchSweets({ category: "Milk-Based" });
+  expect(results.length).toBe(2);
+
+  // Search by price range
+  results = searchSweets({ minPrice: 20, maxPrice: 30 });
+  expect(results.length).toBe(2);
+
+  // Combined search
+  results = searchSweets({ category: "Nut-Based", minPrice: 10, maxPrice: 20 });
+  expect(results.length).toBe(1);
+  expect(results[0].name).toBe("Chikki");
 });

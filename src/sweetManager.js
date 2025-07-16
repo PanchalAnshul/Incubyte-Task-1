@@ -32,12 +32,17 @@ function deleteSweet(id) {
   sweets.splice(index, 1); // Remove 1 item at position `index`
 }
 
-function searchSweets({ name }) {
+function searchSweets({ name, category, minPrice, maxPrice }) {
   return sweets.filter((s) => {
     const matchesName = name ? s.name.toLowerCase().includes(name.toLowerCase()) : true;
-    return matchesName;
+    const matchesCategory = category ? s.category.toLowerCase() === category.toLowerCase() : true;
+    const matchesMinPrice = minPrice !== undefined ? s.price >= minPrice : true;
+    const matchesMaxPrice = maxPrice !== undefined ? s.price <= maxPrice : true;
+
+    return matchesName && matchesCategory && matchesMinPrice && matchesMaxPrice;
   });
 }
+
 
 
 function clearSweets() {
