@@ -32,9 +32,16 @@ function deleteSweet(id) {
   sweets.splice(index, 1); // Remove 1 item at position `index`
 }
 
+function searchSweets({ name }) {
+  return sweets.filter((s) => {
+    const matchesName = name ? s.name.toLowerCase().includes(name.toLowerCase()) : true;
+    return matchesName;
+  });
+}
+
 
 function clearSweets() {
   sweets = [];
 }
 
-module.exports = { addSweet, getSweets, clearSweets, deleteSweet };
+module.exports = { addSweet, getSweets, clearSweets, deleteSweet, searchSweets };

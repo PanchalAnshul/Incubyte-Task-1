@@ -3,12 +3,14 @@ const {
   getSweets,
   clearSweets,
   deleteSweet,
+  searchSweets,
 } = require("../src/sweetManager");
 
 beforeEach(() => {
   clearSweets();
 });
 
+//Add sweets
 test("should add sweets and throw error if duplicate name or ID is added", () => {
   const sweetInputs = [
     {
@@ -92,6 +94,7 @@ test("should add sweets and throw error if duplicate name or ID is added", () =>
   expect(getSweets().length).toBe(5);
 });
 
+//Delete sweets
 test("should delete valid sweet and throw specific error if ID not found", () => {
   addSweet({
     id: 1001,
@@ -152,4 +155,20 @@ test("should view all sweets currently in the shop", () => {
   expect(sweets[0].name).toBe("Barfi");
   expect(sweets[1].name).toBe("Peda");
   expect(sweets[2].name).toBe("Chikki");
+});
+
+//Search sweets
+test("should search sweets by name, category, and price range", () => {
+  clearSweets();
+
+  addSweet({ id: 1, name: "Kaju Katli", category: "Nut-Based", price: 50, quantity: 10 });
+  addSweet({ id: 2, name: "Gulab Jamun", category: "Milk-Based", price: 20, quantity: 30 });
+  addSweet({ id: 3, name: "Peda", category: "Milk-Based", price: 25, quantity: 15 });
+  addSweet({ id: 4, name: "Chikki", category: "Nut-Based", price: 15, quantity: 12 });
+
+  // Search by name
+  let results = searchSweets({ name: "Gulab" });
+  expect(results.length).toBe(1);
+  expect(results[0].name).toBe("Gulab Jamun");
+
 });
