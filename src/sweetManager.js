@@ -43,10 +43,17 @@ function searchSweets({ name, category, minPrice, maxPrice }) {
   });
 }
 
+function sortSweets(by) {
+  const sorted = [...sweets]; // shallow copy
+  if (by === "name") {
+    sorted.sort((a, b) => a.name.localeCompare(b.name));
+  }
+  return sorted;
+}
 
 
 function clearSweets() {
   sweets = [];
 }
 
-module.exports = { addSweet, getSweets, clearSweets, deleteSweet, searchSweets };
+module.exports = { addSweet, getSweets, clearSweets, deleteSweet, searchSweets, sortSweets };

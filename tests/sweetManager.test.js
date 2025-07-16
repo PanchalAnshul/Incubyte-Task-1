@@ -4,6 +4,7 @@ const {
   clearSweets,
   deleteSweet,
   searchSweets,
+  sortSweets,
 } = require("../src/sweetManager");
 
 beforeEach(() => {
@@ -183,4 +184,19 @@ test("should search sweets by name, category, and price range", () => {
   results = searchSweets({ category: "Nut-Based", minPrice: 10, maxPrice: 20 });
   expect(results.length).toBe(1);
   expect(results[0].name).toBe("Chikki");
+});
+
+//Sort sweets
+test("should sort sweets by name", () => {
+  clearSweets();
+
+  addSweet({ id: 1, name: "Peda", category: "Milk-Based", price: 25, quantity: 15 });
+  addSweet({ id: 2, name: "Kaju Katli", category: "Nut-Based", price: 50, quantity: 10 });
+  addSweet({ id: 3, name: "Chikki", category: "Nut-Based", price: 15, quantity: 30 });
+
+  // Sort by name
+  let sorted = sortSweets("name");
+  expect(sorted[0].name).toBe("Chikki");
+  expect(sorted[1].name).toBe("Kaju Katli");
+  expect(sorted[2].name).toBe("Peda");
 });
