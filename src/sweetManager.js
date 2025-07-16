@@ -47,6 +47,10 @@ function sortSweets(by) {
   const sorted = [...sweets]; // shallow copy
   if (by === "name") {
     sorted.sort((a, b) => a.name.localeCompare(b.name));
+  } else if (by === "price") {
+    sorted.sort((a, b) => a.price - b.price);
+  } else if (by === "quantity") {
+    sorted.sort((a, b) => a.quantity - b.quantity);
   }
   return sorted;
 }
