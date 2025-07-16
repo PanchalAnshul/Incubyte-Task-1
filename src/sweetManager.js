@@ -64,9 +64,16 @@ function sortSweets(by) {
   return sorted;
 }
 
+// Function to purchase a sweet
+function purchaseSweet(id, qty) {
+  const sweet = sweets.find((s) => s.id === id);
+  sweet.quantity -= qty;
+}
+
+
 // Function to clear all sweets
 function clearSweets() {
   sweets = [];
 }
 
-module.exports = { addSweet, getSweets, clearSweets, deleteSweet, searchSweets, sortSweets };
+module.exports = { addSweet, getSweets, clearSweets, deleteSweet, searchSweets, sortSweets, purchaseSweet };
