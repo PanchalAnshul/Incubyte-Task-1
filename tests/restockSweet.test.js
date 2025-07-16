@@ -18,4 +18,10 @@ describe("Restock Sweet", () => {
     const sweets = getSweets();
     expect(sweets[0].quantity).toBe(15);
   });
+
+  test("should throw error if sweet ID does not exist for restocking", () => {
+    expect(() => {
+      restockSweet(404, 10);
+    }).toThrow("Sweet with ID 404 not found.");
+  });
 });

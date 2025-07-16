@@ -79,6 +79,9 @@ function purchaseSweet(id, qty) {
 // Function to restock a sweet
 function restockSweet(id, qty) {
   const sweet = sweets.find((s) => s.id === id);
+  if (!sweet) {
+    throw new Error(`Sweet with ID ${id} not found.`);
+  }
   sweet.quantity += qty;
 }
 
@@ -88,4 +91,4 @@ function clearSweets() {
   sweets = [];
 }
 
-module.exports = { addSweet, getSweets, clearSweets, deleteSweet, searchSweets, sortSweets, purchaseSweet, restockSweet };
+module.exports = { addSweet, getSweets, clearSweets, deleteSweet, searchSweets, sortSweets, purchaseSweet,restockSweet };
