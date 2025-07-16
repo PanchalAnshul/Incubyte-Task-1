@@ -1,25 +1,77 @@
-const { addSweet, getSweets, clearSweets,deleteSweet } = require('../src/sweetManager');
+const {
+  addSweet,
+  getSweets,
+  clearSweets,
+  deleteSweet,
+} = require("../src/sweetManager");
 
 beforeEach(() => {
   clearSweets();
 });
 
-test('should add sweets and throw error if duplicate name or ID is added', () => {
+test("should add sweets and throw error if duplicate name or ID is added", () => {
   const sweetInputs = [
-    { id: 1001, name: 'Kaju Katli', category: 'Nut-Based', price: 50, quantity: 20 },
-    { id: 1002, name: 'Gajar Halwa', category: 'Veg-Based', price: 30, quantity: 15 },
-    { id: 1003, name: 'Gulab Jamun', category: 'Milk-Based', price: 10, quantity: 50 },
-    { id: 1004, name: 'Rasgulla', category: 'Milk-Based', price: 20, quantity: 25 },
-    { id: 1005, name: 'Kesar Penda', category: 'Milk-Based', price: 80, quantity: 10 }, 
-    
-    
+    {
+      id: 1001,
+      name: "Kaju Katli",
+      category: "Nut-Based",
+      price: 50,
+      quantity: 20,
+    },
+    {
+      id: 1002,
+      name: "Gajar Halwa",
+      category: "Veg-Based",
+      price: 30,
+      quantity: 15,
+    },
+    {
+      id: 1003,
+      name: "Gulab Jamun",
+      category: "Milk-Based",
+      price: 10,
+      quantity: 50,
+    },
+    {
+      id: 1004,
+      name: "Rasgulla",
+      category: "Milk-Based",
+      price: 20,
+      quantity: 25,
+    },
+    {
+      id: 1005,
+      name: "Kesar Penda",
+      category: "Milk-Based",
+      price: 80,
+      quantity: 10,
+    },
+
     // Duplicate name
-    { id: 1006, name: 'Kaju Katli', category: 'Nut-Based', price: 55, quantity: 10 }, 
-    
+    {
+      id: 1006,
+      name: "Kaju Katli",
+      category: "Nut-Based",
+      price: 55,
+      quantity: 10,
+    },
+
     // Duplicate ID
-    { id: 1002, name: 'MotiChoor Ladoo', category: 'Nut-Based', price: 15, quantity: 30 }, 
-    
-    { id: 1007, name: 'Besan Ladoo', category: 'Nut-Based', price: 12, quantity: 22 },//will not count because error occured
+    {
+      id: 1002,
+      name: "MotiChoor Ladoo",
+      category: "Nut-Based",
+      price: 15,
+      quantity: 30,
+    },
+
+    {
+      id: 1007,
+      name: "Besan Ladoo",
+      category: "Nut-Based",
+      price: 12,
+      quantity: 22,
+    }, //will not count because error occured
   ];
 
   // let addedCount = 0;
@@ -37,7 +89,35 @@ test('should add sweets and throw error if duplicate name or ID is added', () =>
   }
 
   expect(errorCaught).toBe(true); // We expect a duplicate error
-  expect(getSweets().length).toBe(5); 
-  deleteSweet(1001); // Will delete it
-  expect(getSweets().length).toBe(4); // After deletion, we will have 4 sweets left
+  expect(getSweets().length).toBe(5);
+});
+
+test("should delete valid sweet and throw specific error if ID not found", () => {
+  addSweet({
+    id: 1001,
+    name: "Kaju Katli",
+    category: "Nut-Based",
+    price: 50,
+    quantity: 20,
+  });
+
+  addSweet({
+    id: 1002,
+    name: "Rasgulla",
+    category: "Milk-Based",
+    price: 20,
+    quantity: 25,
+  });
+
+  //Delete existing sweet with ID 
+  deleteSweet(1002);
+
+  const sweets = getSweets();
+  expect(sweets.length).toBe(1);
+  expect(sweets[0].id).toBe(1001);
+
+  const wrongId = 1223;
+  expect(() => {
+    deleteSweet(wrongId);
+  }).toThrow(`Sweet with ID ${wrongId} not found.`);
 });

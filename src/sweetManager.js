@@ -23,8 +23,15 @@ function getSweets() {
 }
 
 function deleteSweet(id) {
-  sweets = sweets.filter((s) => s.id !== id);
+  const index = sweets.findIndex((s) => s.id === id);
+  
+  if (index === -1) {
+    throw new Error(`Sweet with ID ${id} not found.`);
+  }
+
+  sweets.splice(index, 1); // Remove 1 item at position `index`
 }
+
 
 function clearSweets() {
   sweets = [];
