@@ -1,4 +1,3 @@
-
 # 🍬 Sweet Shop Inventory Manager
 
 A simple inventory management system for a sweet shop, developed using a **Test-Driven Development (TDD)** approach with a clean React frontend built using **Vite**.
@@ -12,7 +11,7 @@ All backend logic is thoroughly tested using **Jest**, and was written following
 ### Test Files and Their Responsibilities
 
 #### `tests/addSweet.test.js`
-- Adds new sweets with unique ID and name
+- Adds new sweets with a unique ID and name
 - Prevents duplicate entries
 - Validates required fields
 
@@ -26,7 +25,7 @@ All backend logic is thoroughly tested using **Jest**, and was written following
 
 #### `tests/searchSweet.test.js`
 - Searches sweets by ID or name (case-insensitive, partial match)
-- Displays appropriate message
+- Displays an appropriate message
 
 #### `tests/sortSweet.test.js`
 - Sorts sweets alphabetically or by quantity (asc/desc)
@@ -46,23 +45,25 @@ All backend logic is thoroughly tested using **Jest**, and was written following
 
 ## 📁 Project Structure
 
+```
 sweet-shop/
-├── src/ # Core inventory logic
-│ └── sweetManager.js
-├── tests/ # Unit tests using Jest
-│ ├── addSweet.test.js
-│ ├── deleteSweet.test.js
-│ ├── viewSweets.test.js
-│ ├── searchSweet.test.js
-│ ├── sortSweet.test.js
-│ ├── purchaseSweet.test.js
-│ └── restockSweet.test.js
-├── Frontend/ # React frontend
-│ ├── src/components/ # UI Components
-│ ├── src/sweetManager.js
-│ └── ui-screenshot.png
+├── src/                        # Core inventory logic
+│   └── sweetManager.js
+├── tests/                      # Unit tests using Jest
+│   ├── addSweet.test.js
+│   ├── deleteSweet.test.js
+│   ├── viewSweets.test.js
+│   ├── searchSweet.test.js
+│   ├── sortSweet.test.js
+│   ├── purchaseSweet.test.js
+│   └── restockSweet.test.js
+├── Frontend/                   # React frontend
+│   ├── src/components/         # UI Components
+│   ├── src/sweetManager.js
+│   └── ui-screenshot.png
 ├── .gitignore
 └── README.md
+```
 
 ---
 
@@ -87,7 +88,10 @@ npm run dev
 
 Then open http://localhost:5173 in your browser.
 
-✨ Features
+---
+
+## ✨ Features
+
 ✅ Add new sweets to the inventory
 
 ✅ Purchase sweets (decrease stock)
@@ -102,12 +106,18 @@ Then open http://localhost:5173 in your browser.
 
 ✅ Lightweight and intuitive frontend
 
-📌 Notes
+---
+
+## 📌 Notes
+
 ✔️ 100% Test-Driven Development for backend logic
 
 ✔️ Clean UI with essential CRUD + Search/Sort functionality
 
 ✔️ Covers edge cases through Jest tests
 
-👨‍💻 Developer
-Anshul Panchal
+---
+
+## 👨‍💻 Developer
+
+**Anshul Panchal**
