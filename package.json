@@ -1,0 +1,26 @@
+{
+  "name": "sweet-shop",
+  "version": "1.0.0",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PanchalAnshul/Incubyte-Task-1.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/PanchalAnshul/Incubyte-Task-1/issues"
+  },
+  "homepage": "https://github.com/PanchalAnshul/Incubyte-Task-1#readme",
+  "description": "",
+  "devDependencies": {
+    "jest": "^30.0.4"
+  }
+}
