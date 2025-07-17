@@ -32,4 +32,13 @@ describe("Purchase Sweet", () => {
       purchaseSweet(999, 1);
     }).toThrow("Sweet with ID 999 not found.");
   });
+
+  test("should allow purchasing by sweet name (case-insensitive)", () => {
+  addSweet({ id: 3, name: "Rasgulla", category: "Milk-Based", price: 30, quantity: 8 });
+
+  purchaseSweet("rasgulla", 2);
+
+  const sweets = getSweets();
+  expect(sweets[0].quantity).toBe(6);
+});
 });

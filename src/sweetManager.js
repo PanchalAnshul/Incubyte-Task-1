@@ -65,19 +65,32 @@ function sortSweets(by) {
 }
 
 // Function to purchase a sweet
-function purchaseSweet(id, qty) {
-  const sweet = sweets.find((s) => s.id === id);
+function purchaseSweet(identifier, qty = 1) {
+  const sweet =
+    typeof identifier === "number"
+      ? sweets.find((s) => s.id === identifier)
+      : sweets.find((s) => s.name.toLowerCase() === identifier.toLowerCase());
+
   if (!sweet) {
-    throw new Error(`Sweet with ID ${id} not found.`);
+    throw new Error(
+      typeof identifier === "number"
+        ? `Sweet with ID ${identifier} not found.`
+        : `Sweet named "${identifier}" not found.`
+    );
   }
-  if (qty > sweet.quantity) {
+
+  if (sweet.quantity < qty) {
     throw new Error("Not enough stock to complete purchase.");
   }
+
   sweet.quantity -= qty;
 }
 
 // Function to restock a sweet
 function restockSweet(id, qty) {
+  if (qty <= 0) {
+  throw new Error("Quantity must be greater than 0.");
+}
   const sweet = sweets.find((s) => s.id === id);
   if (!sweet) {
     throw new Error(`Sweet with ID ${id} not found.`);
